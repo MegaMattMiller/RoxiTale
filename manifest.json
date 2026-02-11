@@ -1,0 +1,20 @@
+{
+  "Group": "Tater",
+  "Name": "RoxiTale",
+  "Version": "0.0.1",
+  "Description": "",
+  "Authors": [
+    {
+      "Name": "Tater",
+      "Email": "",
+      "Url": ""
+    }
+  ],
+  "Website": "",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "LoadBefore": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": false,
+  "SubPlugins": []
+}
