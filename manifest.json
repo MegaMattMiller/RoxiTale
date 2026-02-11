@@ -1,12 +1,12 @@
 {
   "Group": "Tater",
   "Name": "RoxiTale",
-  "Version": "0.0.1",
+  "Version": "0.0.2",
   "Description": "",
   "Authors": [
     {
       "Name": "Tater",
-      "Email": "",
+      "Email": "tater@taterthetaidum.com",
       "Url": ""
     }
   ],
