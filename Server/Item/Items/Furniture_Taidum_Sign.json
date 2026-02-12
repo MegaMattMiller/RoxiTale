@@ -62,5 +62,23 @@
   "ItemSoundSetId": "ISS_Blocks_Wood",
   "Quality": "Technical",
   "Model": "Blocks/Tater/Taidum_Sign/Taidum_Sign.blockymodel",
-  "Texture": "Blocks/Tater/Taidum_Sign/Taidum_Sign_Texture.png"
+  "Texture": "Blocks/Tater/Taidum_Sign/Taidum_Sign_Texture.png",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Stick",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Misc"
+        ]
+      }
+    ],
+    "TimeSeconds": 1
+  }
 }
