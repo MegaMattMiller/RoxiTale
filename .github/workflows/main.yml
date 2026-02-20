@@ -36,9 +36,10 @@ jobs:
           SERVERVERSION=$(jq -r '.ServerVersion' manifest.json)
           SERVERVERSION=$(echo $SERVERVERSION | cut -d'-' -f1)
           VERSIONSTRING="$SERVERVERSION-$VERSION"
-          zip -r RoxiTale-$VERSIONSTRING.zip ./ -x ".git/*" ".github/*" "*.bak" "*.tmp" "*.log"
+          FILENAME="RoxiTale-$VERSIONSTRING.zip"
+          zip -r $FILENAME ./ -x ".git/*" ".github/*" "*.bak" "*.tmp" "*.log"
           ls -la
-          gh release create "$VERSIONSTRING" \
+          gh release create "$VERSIONSTRING" $FILENAME \
               --repo="$GITHUB_REPOSITORY" \
               --title="${VERSIONSTRING}" \
               --generate-notes
