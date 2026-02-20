@@ -26,10 +26,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - name: Zip Folder
+      - name: Zip Folder and Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}
         run: |
           ls -la
           VERSION=$(jq -r '.Version' manifest.json)
@@ -37,7 +36,7 @@ jobs:
           SERVERVERSION=$(echo $SERVERVERSION | cut -d'-' -f1)
           VERSIONSTRING="$SERVERVERSION-$VERSION"
           FILENAME="RoxiTale-$VERSIONSTRING.zip"
-          zip -r $FILENAME ./ -x ".git/*" ".github/*" "*.bak" "*.tmp" "*.log" ".gitignore"
+          zip -r $FILENAME ./ -x ".git/*" ".github/*" "*.bak" "*.tmp" "*.log" ".gitignore" ".DS_Store"
           ls -la
           gh release create "$VERSIONSTRING" $FILENAME \
               --repo="$GITHUB_REPOSITORY" \
