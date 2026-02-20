@@ -37,7 +37,7 @@ jobs:
           SERVERVERSION=$(echo $SERVERVERSION | cut -d'-' -f1)
           VERSIONSTRING="$SERVERVERSION-$VERSION"
           FILENAME="RoxiTale-$VERSIONSTRING.zip"
-          zip -r $FILENAME ./ -x ".git/*" ".github/*" "*.bak" "*.tmp" "*.log"
+          zip -r $FILENAME ./ -x ".git/*" ".github/*" "*.bak" "*.tmp" "*.log" ".gitignore"
           ls -la
           gh release create "$VERSIONSTRING" $FILENAME \
               --repo="$GITHUB_REPOSITORY" \
