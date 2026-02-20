@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ['main']
     tags:
       - '*'
 
@@ -25,18 +25,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - name: Zip Release
-        # You may pin to the exact commit or the version.
-        # uses: TheDoctor0/zip-release@b57d897cb5d60cb78b51a507f63fa184cfe35554
-        uses: TheDoctor0/zip-release@0.7.6
-        with:
-          type: 'zip'
-          filename: 'RoxiTale.zip'
-          exclusions: '*.git*'
+      - name: Zip Folder
+        run: |
+          ls -la
+          VERSION=$(jq -r '.Version' manifest.json)
+          SERVERVERSION=$(jq -r '.ServerVersion' manifest.json)
+          SERVERVERSION=$(echo $SERVERVERSION | cut -d'-' -f1)
+          VERSIONSTRING="$SERVERVERSION-$VERSION"
+          zip -r RoxiTale-$VERSIONSTRING.zip ./ -x ".git/*" ".github/*" "*.bak" "*.tmp" "*.log"
+          ls -la
 
-      - name: Upload Release
-        uses: ncipollo/release-action@v1.20.0
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v1
         with:
-          artifacts: "RoxiTale.zip"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          
+          files: RoxiTale-*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
