@@ -35,6 +35,13 @@ jobs:
           zip -r RoxiTale-$VERSIONSTRING.zip ./ -x ".git/*" ".github/*" "*.bak" "*.tmp" "*.log"
           ls -la
 
+      - name: Create Release Tag
+        run: |
+          git tag "$VERSIONSTRING"
+          git push origin "$VERSIONSTRING"
+        env:
+          VERSIONSTRING: ${{ env.VERSIONSTRING }}
+
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v1
         with:
