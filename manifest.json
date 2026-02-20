@@ -1,7 +1,7 @@
 {
   "Group": "Tater",
   "Name": "RoxiTale",
-  "Version": "0.0.4",
+  "Version": "0.0.5",
   "Description": "",
   "Authors": [
     {
@@ -11,6 +11,7 @@
     }
   ],
   "Website": "",
+  "ServerVersion": "2026.02.19-1a311a592",
   "Dependencies": {},
   "OptionalDependencies": {},
   "LoadBefore": {},
