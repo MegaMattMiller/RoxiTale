@@ -30,14 +30,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ls -la
           VERSION=$(jq -r '.Version' manifest.json)
           SERVERVERSION=$(jq -r '.ServerVersion' manifest.json)
           SERVERVERSION=$(echo $SERVERVERSION | cut -d'-' -f1)
           VERSIONSTRING="$SERVERVERSION-$VERSION"
           FILENAME="RoxiTale-$VERSIONSTRING.zip"
           zip -r $FILENAME ./ -x ".git/*" ".github/*" "*.bak" "*.tmp" "*.log" ".gitignore" ".DS_Store"
-          ls -la
           gh release create "$VERSIONSTRING" $FILENAME \
               --repo="$GITHUB_REPOSITORY" \
               --title="${VERSIONSTRING}" \
